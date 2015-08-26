@@ -10,7 +10,7 @@ Redis-AOF-Modifier
 - appendonly.aof.filtered: 输出被过滤掉的命令，即匹配COMMAND,KEY的命令  
 - appendonly.aof.filtered_readable: appendonly.aof.filtered的可读模式  
 - appendonly.aof.new: 过滤掉相关命令的aof文件，之后需要通过这个文件作为aof恢复redis  
-.e.g
+.e.g  
 > python aof_filter.py -i appendonly.aof -p 'del,a-delete-key'
 
 ####2) aof_fetch.py  
@@ -20,12 +20,12 @@ Redis-AOF-Modifier
 - appendonly.aof.fetch_readable: appendonly.aof.fetch的可读格式  
 - appendonly.aof.filtered: 输出要找回的命令，即匹配COMMAND,KEY的命令  
 - appendonly.aof.filtered_readable: appendonly.aof.filtered的可读格式  
-.e.g
+.e.g  
 > python aof_fetch.py -i appendonly.aof -p 'set,a-delete-key'
 
 ####3) aof_redo.py  
    用于redo aof中的命令，通常用于aof_fetch.py输出的结果，以便恢复对应的数据  
-.e.g
+.e.g  
 > python aof_redo.py -i appendonly.aof.filtered -H 127.0.0.1 -p 6379
    
 ###2. 命令格式  
@@ -45,5 +45,4 @@ e.g.
 1) 运行结果会包括过滤命令的可读格式，恢复时先通过这个文件确定过滤是否符合预期。  
 2) aof-redo.py需要依赖redis-py。  
 3) 各个脚本支持-h，可以查看具体的配置选项。  
-4) 如果aof文件比较大，过滤和redis加载都需要时间，即需要对aof进行两次扫描。  
-所以尽量使用aof_fetch.py，在其不适用的情况下，再使用aof_filter.py。
+4) 如果aof文件比较大，过滤和redis加载都需要时间，即需要对aof进行两次扫描。所以尽量使用aof_fetch.py，在其不适用的情况下，再使用aof_filter.py。
