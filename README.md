@@ -10,7 +10,7 @@ Redis-AOF-Modifier
 - appendonly.aof.filtered: 输出被过滤掉的命令，即匹配COMMAND,KEY的命令  
 - appendonly.aof.filtered_readable: appendonly.aof.filtered的可读模式  
 - appendonly.aof.new: 过滤掉相关命令的aof文件，之后需要通过这个文件作为aof恢复redis  
-.e.g  
+e.g.  
 > python aof_filter.py -i appendonly.aof -p 'del,a-delete-key'
 
 ####2) aof_fetch.py  
@@ -20,12 +20,12 @@ Redis-AOF-Modifier
 - appendonly.aof.fetch_readable: appendonly.aof.fetch的可读格式  
 - appendonly.aof.filtered: 输出要找回的命令，即匹配COMMAND,KEY的命令  
 - appendonly.aof.filtered_readable: appendonly.aof.filtered的可读格式  
-.e.g  
+e.g.  
 > python aof_fetch.py -i appendonly.aof -p 'set,a-delete-key'
 
 ####3) aof_redo.py  
    用于redo aof中的命令，通常用于aof_fetch.py输出的结果，以便恢复对应的数据  
-.e.g  
+e.g.  
 > python aof_redo.py -i appendonly.aof.filtered -H 127.0.0.1 -p 6379
    
 ###2. 命令格式  
